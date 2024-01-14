@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    "rootDir": "./",
+    "baseUrl": ".",
+    "module": "ESNext",
+    "target": "ESNext",
+    "lib": [
+      "DOM",
+      "ESNext",
+    ],
+    "strict": true,
+    "isolatedModules": false,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": [
+      "vite/client",
+    ],
+    "paths": {
+      "~~/*": [
+        "./*"
+      ],
+      "~/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "vueCompilerOptions": {
+    "target": "auto",
+  },
+  "exclude": [
+    "./node_modules",
+    "./packages/*/dist",
+  ],
+  "include": [
+    "./packages/*/src/**/*",
+    "./cypress/**/*"
+  ]
+}
