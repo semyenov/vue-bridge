@@ -1,4 +1,3 @@
-/// <reference types="./component.d.ts" />
 import '~~/cypress/support/component.shared'
 
 import { mount } from 'cypress/vue'

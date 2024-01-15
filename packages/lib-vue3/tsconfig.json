@@ -1,27 +1,33 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
     "rootDir": "./",
     "jsx": "preserve",
-    "jsxImportSource": "vue",
     "jsxFactory": "h",
     "jsxFragmentFactory": "h",
+    "jsxImportSource": "vue",
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": [
+      "DOM",
+      "ESNext",
+    ],
+    "types": [
+      "vite/client",
+      "./types"
+    ],
     "paths": {
       "~/*": [
-        "./src/*"
+        "src/*"
       ]
     }
   },
-  "include": [
-    "src",
-    "cypress"
-  ],
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
   ],
   "vueCompilerOptions": {
-    "target": 3.3
+    "target": 3.3,
   }
 }

@@ -1,20 +1,24 @@
-import path from 'node:path'
-import url from 'node:url'
+import { resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
+import watch from '@cypress/watch-preprocessor'
 import { defineConfig } from 'cypress'
 
-const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 export default defineConfig({
+  projectId: '4ajp7g',
+
   component: {
-    indexHtmlFile: path.resolve(__dirname, '../../cypress/support/component-index.html'),
-    supportFile: path.resolve(__dirname, './cypress/support/component.ts'),
-    devServer: { bundler: 'vite', framework: 'vue' },
+    indexHtmlFile: resolve(__dirname, '../../cypress/support/component-index.html'),
+    supportFile: resolve(__dirname, './cypress/support/component.ts'),
+    devServer: { bundler: 'vite', framework: 'vue', viteConfig: { configFile: '../vite.config.ts' } },
   },
 
   e2e: {
-    setupNodeEvents(_on, _config) {
+    setupNodeEvents(on, _config) {
       // implement node event listeners here
+      on('file:preprocessor', watch())
     },
   },
 })

@@ -12,7 +12,7 @@ const defaults: Partial<VueBridgeBuildOptions> = {
   outDir: 'dist',
 }
 
-const fileExtensionMap = {
+const fileExtensionMap: Record<string, string> = {
   es: 'mjs',
   cjs: 'cjs',
   iife: 'js',
@@ -22,7 +22,7 @@ const fileExtensionMap = {
 export function pluginsConfig(plugins: Plugin[] = []): UserConfig['plugins'] {
   return [
     Components({
-      dirs: ['packages/*/src/components'],
+      dirs: ['~/components'],
       dts: true,
     }),
     dts(),
@@ -61,8 +61,6 @@ export function buildConfig(_options: VueBridgeBuildOptions): UserConfig['build'
       entry: 'src/main.ts',
       formats: ['es', 'cjs', 'iife'],
       name: options.name, // global variable name for IIFE build
-
-      // @ts-expect-error Not sure why this is invalid.
       fileName: (format: keyof typeof fileExtensionMap) => {
         return `index.${format}.${fileExtensionMap[format]}`
       },

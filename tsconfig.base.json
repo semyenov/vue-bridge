@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": "./",
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "isolatedModules": false,
+    "skipLibCheck": true,
+    "resolvePackageJsonImports": true,
+    "incremental": true,
+    "resolveJsonModule": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+  },
+  "exclude": [
+    "dist",
+    "node_modules",
+  ]
+}

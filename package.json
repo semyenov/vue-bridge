@@ -28,10 +28,13 @@
     "postinstall": "esno scripts/symlink packages/lib-vue3/src packages/lib-vue2/src"
   },
   "devDependencies": {
+    "@cypress/watch-preprocessor": "^1.0.1",
     "@sozdev/eslint-config": "^0.0.11",
     "@testing-library/cypress": "^10.0.1",
     "@vue-bridge/eslint-config": "^0.2.0",
     "@vue/tsconfig": "^0.5.1",
+    "consola": "^3.2.3",
+    "core-js": "^3.35.0",
     "cpy-cli": "^5.0.0",
     "cypress": "^13.6.2",
     "eslint": "^8.56.0",
@@ -46,7 +49,7 @@
     "typescript": "^5.3.3",
     "unplugin-vue-components": "^0.26.0",
     "vite": "5.0.0",
-    "vite-plugin-dts": "^3.7.0",
+    "vite-plugin-dts": "^3.7.1",
     "vitest": "^1.2.0",
     "vue-eslint-parser": "^9.4.0",
     "vue-tsc": "^1.8.27"
@@ -62,9 +65,5 @@
   "lint-staged": {
     "*.{js,ts,tsx,md,vue}": "pnpm lint",
     "*.{js,css,md,vue}": "prettier --write"
-  },
-  "dependencies": {
-    "consola": "^3.2.3",
-    "core-js": "^3.35.0"
   }
 }

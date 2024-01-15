@@ -1,37 +1,17 @@
 {
+  "extends": ".tsconfig.base.json",
   "compilerOptions": {
-    "rootDir": "./",
-    "baseUrl": ".",
-    "module": "ESNext",
+    "module": "System",
     "target": "ESNext",
-    "lib": [
-      "DOM",
-      "ESNext",
-    ],
-    "strict": true,
-    "isolatedModules": false,
-    "esModuleInterop": true,
-    "jsx": "preserve",
-    "skipLibCheck": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "noUnusedLocals": true,
-    "strictNullChecks": true,
-    "allowJs": true,
-    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "NodeNext",
     "types": [
       "vite/client",
-    ],
+      "vitest",
+      "cypress",
+    ]
   },
   "include": [
-    "src",
-    "cypress",
-  ],
-  "exclude": [
-    "dist",
-    "node_modules",
-  ],
-  "vueCompilerOptions": {
-    "target": "auto",
-  },
+    "./src/**/*.ts",
+    "./scripts/**/*.ts",
+  ]
 }

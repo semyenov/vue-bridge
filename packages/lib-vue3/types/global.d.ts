@@ -4,6 +4,8 @@ import type { Router } from 'vue-router'
 type MountParams = Parameters<typeof mount>
 type OptionsParam = MountParams[1] & { router?: Router }
 
+export { }
+
 declare global {
   namespace Cypress {
     interface Chainable {
