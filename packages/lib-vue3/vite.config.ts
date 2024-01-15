@@ -25,7 +25,7 @@ export default defineConfig({
       localizeDeps: true,
       useSwc: true,
       swcOptions: {
-        env: { mode: 'usage', coreJs: '3' },
+        env: { mode: 'usage' },
         jsc: {
           loose: true,
           parser: {
@@ -37,18 +37,16 @@ export default defineConfig({
     }),
   ]),
 
-  build: buildConfig({
-    name: libraryGlobalName,
-  }),
+  build: buildConfig({ name: libraryGlobalName }),
 
-  ...sharedConfig(),
+  ...sharedConfig({
+    resolve: {
+      alias: {
+        '~~': path.resolve(__dirname, '../..'),
+        '~': path.resolve(__dirname, './src'),
 
-  resolve: {
-    alias: {
-      '~~': path.resolve(__dirname, '../..'),
-      '~': path.resolve(__dirname, './src'),
-
-      '@vue-bridge/runtime': '@vue-bridge/runtime/vue3',
+        '@vue-bridge/runtime': '@vue-bridge/runtime/vue3',
+      },
     },
-  },
+  }),
 })

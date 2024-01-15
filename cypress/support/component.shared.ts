@@ -4,4 +4,5 @@
  */
 import consola from 'consola'
 
-consola.withTag('shared').log('hello world')
+export const logger = consola.withTag('shared')
+logger.debug('Shared support code loaded')
