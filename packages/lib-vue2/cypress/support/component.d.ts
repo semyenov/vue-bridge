@@ -1,5 +1,3 @@
-/// <reference types="cypress" />
-
 import type { mount } from 'cypress/vue2'
 
 // import VueRouter from 'vue-router'

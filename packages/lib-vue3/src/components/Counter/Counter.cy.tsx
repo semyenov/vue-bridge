@@ -1,12 +1,13 @@
-import Counter from './Counter'
+import Counter from '~/components/Counter/Counter'
 
 describe('<Counter />', () => {
   it('renders', () => {
-    cy.mount(() => <Counter max={10} min={-1} />)
+    cy.mount(() => <Counter max={10} min={0} />)
       .get('.counter-buttons')
       .children()
       .as('buttons')
-      .get('.counter-display')
+
+    cy.get('.counter-display')
       .as('display')
 
     cy.get('@buttons')
@@ -23,7 +24,6 @@ describe('<Counter />', () => {
       .click()
       .click()
 
-    // Assertions
     cy.get('@display')
       .should('have.text', '4')
   })

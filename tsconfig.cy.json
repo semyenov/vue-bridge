@@ -1,16 +1,10 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "lib": [
-      "ES2020.Number",
-      "ES2020.String",
-    ],
+    "jsx": "preserve",
     "types": [
       "cypress"
     ],
-    "jsx": "preserve",
-    "jsxFactory": "h",
-    "jsxFragmentFactory": "h"
   },
   "files": [
     "**/*.cy.tsx",

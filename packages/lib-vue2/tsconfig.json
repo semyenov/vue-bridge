@@ -1,8 +1,17 @@
 {
   "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": "./",
+    "jsx": "preserve",
+  },
   "include": [
-    "src/**/*",
-    "cypress/**/*"
+    "./src",
+    "./cypress"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
   ],
   "vueCompilerOptions": {
     "target": 2.7

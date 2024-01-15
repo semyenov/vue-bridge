@@ -1,6 +1,6 @@
 import { it } from 'vitest'
 
-import Counter from './Counter'
+import Counter from '~/components/Counter/Counter'
 
 it('works', () => {
   Counter

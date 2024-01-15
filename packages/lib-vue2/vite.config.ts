@@ -1,3 +1,5 @@
+import path from 'node:path'
+
 import vue from '@vitejs/plugin-vue2'
 import vueJsx from '@vitejs/plugin-vue2-jsx'
 import { vueBridge } from '@vue-bridge/vite-plugin'
@@ -20,26 +22,28 @@ export default defineConfig({
       localizeDeps: true,
       useSwc: true,
       swcOptions: {
-        env: {
-          mode: 'usage',
-        },
+        env: { mode: 'usage' },
         jsc: {
+          loose: true,
           parser: {
             syntax: 'typescript',
             tsx: true,
           },
-          loose: true,
         },
       },
     }),
   ]),
-  resolve: {
-    alias: {
-      '@vue-bridge/runtime': '@vue-bridge/runtime/vue2',
+
+  build: buildConfig({ name: libraryGlobalName }),
+
+  ...sharedConfig({
+    resolve: {
+      alias: {
+        '~~': path.resolve(__dirname, '../..'),
+        '~': path.resolve(__dirname, './src'),
+
+        '@vue-bridge/runtime': '@vue-bridge/runtime/vue2',
+      },
     },
-  },
-  build: buildConfig({
-    name: libraryGlobalName,
   }),
-  ...sharedConfig(),
 })

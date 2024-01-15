@@ -1,54 +1,69 @@
 import { defineComponent, ref } from 'vue'
 
-import type { Ref } from 'vue'
+export default defineComponent({
+  name: 'Counter',
 
-export default defineComponent<{
-  max: number
-  min: number
-}, {
-  counter: Ref<number>
-  increment: () => void
-  decrement: () => void
-}>({
-      setup({ max, min }, { emit }) {
-        const counter = ref(0)
+  props: {
+    max: {
+      type: Number,
+      required: true,
+    },
+    min: {
+      type: Number,
+      required: true,
+    },
+  },
 
-        const increment = () => {
-          if (counter.value >= max)
-            return
+  emits: {
+    change: (value: number) => {
+      return typeof value === 'number'
+    },
+  },
 
-          counter.value++
-          emit('change', counter.value)
-        }
+  setup({ max, min }, { emit }) {
+    const counter = ref(0)
 
-        const decrement = () => {
-          if (counter.value <= min)
-            return
+    const increment = () => {
+      if (counter.value >= max)
+        return
 
-          counter.value--
-          emit('change', counter.value)
-        }
+      counter.value++
+      emit('change', counter.value)
+    }
 
-        return {
-          counter,
-          increment,
-          decrement,
-        }
-      },
+    const decrement = () => {
+      if (counter.value <= min)
+        return
 
-      render() {
-        return (
-          <div class="counter-wrapper">
-            <h1>Counter</h1>
-            <div class="counter-buttons">
-              <button class="btn" onClick={this.increment}>+</button>
-              <button class="btn" onClick={this.decrement}>-</button>
-            </div>
-            <hr />
-            <div class="counter-display">
-              {this.counter}
-            </div>
-          </div>
-        )
-      },
-    })
+      counter.value--
+      emit('change', counter.value)
+    }
+
+    return {
+      counter,
+
+      increment,
+      decrement,
+    }
+  },
+
+  render() {
+    return (
+      <div class="counter-wrapper">
+        <h1 class="counter-title">Counter</h1>
+        <div class="counter-buttons">
+          <button class="btn" onClick={this.increment}>
+            +
+          </button>
+          <button class="btn" onClick={this.decrement}>
+            -
+          </button>
+        </div>
+        <hr />
+        <div class="counter-display">
+          {this.counter}
+        </div>
+      </div>
+    )
+  },
+})

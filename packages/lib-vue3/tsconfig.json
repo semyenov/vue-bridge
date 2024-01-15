@@ -1,8 +1,25 @@
 {
   "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": "./",
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "h",
+    "paths": {
+      "~/*": [
+        "./src/*"
+      ]
+    }
+  },
   "include": [
-    "src/**/*",
-    "cypress/**/*"
+    "src",
+    "cypress"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
   ],
   "vueCompilerOptions": {
     "target": 3.3

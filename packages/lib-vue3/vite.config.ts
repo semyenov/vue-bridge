@@ -16,15 +16,6 @@ const libraryGlobalName = 'Sozdev'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  resolve: {
-    alias: {
-      '~/': path.resolve(__dirname, './src'),
-      '~~': path.resolve(__dirname, '../..'),
-
-      '@vue-bridge/runtime': '@vue-bridge/runtime/vue3',
-    },
-  },
-
   plugins: pluginsConfig([
     vue(),
     vueJsx(),
@@ -34,15 +25,13 @@ export default defineConfig({
       localizeDeps: true,
       useSwc: true,
       swcOptions: {
-        env: {
-          mode: 'usage',
-        },
+        env: { mode: 'usage', coreJs: '3' },
         jsc: {
+          loose: true,
           parser: {
             syntax: 'typescript',
             tsx: true,
           },
-          loose: true,
         },
       },
     }),
@@ -53,4 +42,13 @@ export default defineConfig({
   }),
 
   ...sharedConfig(),
+
+  resolve: {
+    alias: {
+      '~~': path.resolve(__dirname, '../..'),
+      '~': path.resolve(__dirname, './src'),
+
+      '@vue-bridge/runtime': '@vue-bridge/runtime/vue3',
+    },
+  },
 })
